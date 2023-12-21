@@ -18,11 +18,11 @@ final class JwtPayload
 
     private string $cHash;
 
-    private string $email;
+    private ?string $email;
 
-    private bool $emailVerified;
+    private ?bool $emailVerified;
 
-    private bool $isPrivateEmail;
+    private ?bool $isPrivateEmail;
 
     private int $authTime;
 
@@ -37,9 +37,9 @@ final class JwtPayload
         DateTimeInterface $iat,
         string $sub,
         string $cHash,
-        string $email,
-        bool $emailVerified,
-        bool $isPrivateEmail,
+        ?string $email,
+        ?bool $emailVerified,
+        ?bool $isPrivateEmail,
         int $authTime,
         bool $nonceSupported,
         ?string $nonce
@@ -88,17 +88,17 @@ final class JwtPayload
         return $this->cHash;
     }
 
-    public function getEmail(): string
+    public function getEmail(): ?string
     {
         return $this->email;
     }
 
-    public function isEmailVerified(): bool
+    public function isEmailVerified(): ?bool
     {
         return $this->emailVerified;
     }
 
-    public function isPrivateEmail(): bool
+    public function isPrivateEmail(): ?bool
     {
         return $this->isPrivateEmail;
     }

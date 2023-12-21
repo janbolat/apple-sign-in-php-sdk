@@ -22,11 +22,11 @@ class AppleJwtStructFactory
             $claims->get('iat'),
             $claims->get('sub'),
             $claims->get('c_hash', ''),
-            $claims->get('email', ''),
+            $claims->get('email', null),
             // For some reason Apple API returns boolean flag as a string
-            (string) $claims->get('email_verified', 'false') === 'true',
+            $claims->get('email_verified', null) != null ? (string) $claims->get('email_verified', 'false') === 'true' : null,
             // For some reason Apple API returns boolean flag as a string
-            (string) $claims->get('is_private_email', 'false') === 'true',
+            $claims->get('is_private_email', null) != null ? (string) $claims->get('is_private_email', 'false') === 'true' : null,
             $claims->get('auth_time'),
             $claims->get('nonce_supported', false),
             $claims->get('nonce')
